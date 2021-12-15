@@ -1,7 +1,7 @@
 import { Method, ContentType } from '../api/constans'
 import axios, { AxiosRequestConfig, AxiosInstance, AxiosResponse } from 'axios'
 
-interface IData {
+export type IData = {
   data: object | [];
 }
 interface IResponseDataParams {
@@ -30,9 +30,10 @@ export class ApiService {
   setInterceptors (config: AxiosInstance = this.client) {
     const requestSuccessInterceptor = (configuration: any): any => {
       const token = localStorage.getItem('token')
-      configuration.headers = {
-        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-        Authorization: `Bearer ${token}`
+      if (token) {
+        configuration.headers = {
+          Authorization: `Bearer ${token}`
+        }
       }
       return configuration
     }
@@ -58,6 +59,7 @@ export class ApiService {
       headers: {
         'Content-Type': contentType
       },
+      withCredentials: true,
       url,
       method,
       params,

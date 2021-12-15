@@ -15,7 +15,6 @@
           Quasar App
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
 
@@ -104,7 +103,6 @@ export default defineComponent({
 
   setup () {
     const leftDrawerOpen = ref(false)
-
     return {
       essentialLinks: linksList,
       leftDrawerOpen,
