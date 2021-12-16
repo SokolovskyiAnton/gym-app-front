@@ -1,4 +1,5 @@
 import { Method, ContentType } from '../api/constans'
+import NotificationService from './notifyService'
 import axios, { AxiosRequestConfig, AxiosInstance, AxiosResponse } from 'axios'
 
 export type IData = {
@@ -68,8 +69,12 @@ export class ApiService {
     }
     const request = this.client.request({ ...this.config, ...config })
     const resolve = (res: IResponseDataParams) => res.data
-    const reject = (error: ErrorEvent) => Promise.reject(error)
+    const reject = (error: ErrorEvent) => ApiService.displayError('Error', error.message)
 
     return request.then(resolve).catch(reject)
+  }
+
+  static displayError (caption: string, message: string) {
+    NotificationService.createNotification(caption, message)
   }
 }

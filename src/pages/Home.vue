@@ -23,7 +23,7 @@ export default {
       //   },
       //   id: '61bb2e396bf5f6ee064327b6'
       // })
-      await store.dispatch('deleteResult', { id: '61bb31640ac285bcb2536889' })
+      await store.dispatch('deleteResult', { id: '61bb31640ac285bcb256889' })
       console.log(store.getters.exercises)
     })
   }

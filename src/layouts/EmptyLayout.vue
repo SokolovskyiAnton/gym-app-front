@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="lHh Lpr lFf" class="flex flex-center">
     <q-page-container>
       <router-view />
     </q-page-container>
@@ -10,6 +10,6 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'MainLayout'
+  name: 'EmptyLayout'
 })
 </script>
