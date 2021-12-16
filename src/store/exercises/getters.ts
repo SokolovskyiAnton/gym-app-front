@@ -5,6 +5,9 @@ import { IExercise, StateInterface } from './types'
 const getters: GetterTree<StateInterface, RootInterface> = {
   exercises (state): Array<IExercise> | [] {
     return state.exercises
+  },
+  exercise (state): IExercise | null {
+    return state.exercise
   }
 }
 

@@ -4,9 +4,11 @@ import axios, { AxiosRequestConfig, AxiosInstance, AxiosResponse } from 'axios'
 export type IData = {
   data: object | [];
 }
+
 interface IResponseDataParams {
   data: IData;
 }
+
 interface EndpointConfig {
   url: string;
   method?: Method;
@@ -53,7 +55,6 @@ export class ApiService {
     const {
       url, method = Method.GET, contentType = ContentType.JSON
     } = endpointConfig
-
     const data = payload
     const config: AxiosRequestConfig = {
       headers: {

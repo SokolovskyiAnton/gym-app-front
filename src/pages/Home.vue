@@ -10,10 +10,12 @@ export default {
   name: 'Home',
   setup () {
     const store = useStore()
-
     onMounted(async () => {
-      await store.dispatch('auth/login', { email: 'q@mail.ru', password: 'qqq55555' })
-      await store.dispatch('exercises/getExercises')
+      await store.dispatch('login', { email: 'q@mail.ru', password: 'qqq55555' })
+      await store.dispatch('getExercises')
+      // await store.dispatch('createExercise', { title: 'HHH111' })
+      // await store.dispatch('deleteExercise', { id: '61bb0c84a6ab125e2edb8dcd' })
+      console.log(store.getters.exercises)
     })
   }
 }

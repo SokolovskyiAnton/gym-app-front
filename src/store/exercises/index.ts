@@ -7,7 +7,7 @@ import mutations from './mutations'
 import actions from './actions'
 
 const exercises: Module<StateInterface, RootInterface> = {
-  namespaced: true,
+  namespaced: false,
   getters,
   actions,
   mutations,

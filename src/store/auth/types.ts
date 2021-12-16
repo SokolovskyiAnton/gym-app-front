@@ -15,6 +15,11 @@ export interface LoginResponse {
   email: string;
   password: string;
 }
+export interface SignUpForm {
+  username: string | number;
+  email: string;
+  password: string;
+}
 export interface StateInterface {
   user: IUser | null,
   auth: boolean

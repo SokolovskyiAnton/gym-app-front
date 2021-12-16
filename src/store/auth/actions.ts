@@ -1,6 +1,6 @@
 import { ActionTree } from 'vuex'
 import { RootInterface } from '../index'
-import { IRefreshToken, IUser, LoginResponse, StateInterface } from './types'
+import { IRefreshToken, IUser, LoginResponse, SignUpForm, StateInterface } from './types'
 import { api } from 'boot/axios'
 
 const actions: ActionTree<StateInterface, RootInterface> = {
@@ -8,10 +8,25 @@ const actions: ActionTree<StateInterface, RootInterface> = {
     try {
       const user = await api.request(api.urls.auth.login, payload) as IUser
       localStorage.setItem('token', user.accessToken)
-      // document.cookie = `name=${user.refreshToken}`
-      // console.log(document.cookie)
       commit('setUser', user)
+      commit('setAuth')
       return user
+    } catch (e) {
+      console.log(e)
+    }
+  },
+  async signup (_, payload: SignUpForm) {
+    try {
+      await api.request(api.urls.auth.signup, payload)
+    } catch (e) {
+      console.log(e)
+    }
+  },
+  async logout ({ commit }) {
+    try {
+      await api.request(api.urls.auth.logout)
+      commit('setLogout')
+      commit('setAuth')
     } catch (e) {
       console.log(e)
     }
@@ -19,10 +34,9 @@ const actions: ActionTree<StateInterface, RootInterface> = {
   async refresh () {
     try {
       const token = await api.request(api.urls.auth.refresh) as IRefreshToken
-      console.log(token)
       localStorage.setItem('token', token.accessToken)
     } catch (e) {
-
+      console.log(e)
     }
   }
 }

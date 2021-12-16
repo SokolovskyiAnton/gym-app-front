@@ -12,5 +12,6 @@ export interface IExercise extends IData {
   _id: string;
 }
 export interface StateInterface {
-  exercises: Array<IExercise>
+  exercises: Array<IExercise>,
+  exercise: IExercise | null
 }

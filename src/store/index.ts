@@ -8,7 +8,7 @@ import {
   Store as VuexStore,
   useStore as vuexUseStore
 } from 'vuex'
-
+// TODO find info about validation of modules
 export interface RootInterface {
   example: unknown
 }

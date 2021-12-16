@@ -31,15 +31,15 @@ export const urlsApp = {
       method: Method.POST
     },
     get: {
-      url: '/exercises/:id',
+      url: '/exercises/exercise',
       method: Method.GET
     },
     update: {
-      url: '/exercises/:id',
+      url: '/exercises',
       method: Method.PUT
     },
     delete: {
-      url: '/exercises/:id',
+      url: '/exercises',
       method: Method.DELETE
     }
   },
