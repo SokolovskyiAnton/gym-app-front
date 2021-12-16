@@ -53,15 +53,15 @@ export const urlsApp = {
       method: Method.POST
     },
     get: {
-      url: '/results/:id',
+      url: '/results',
       method: Method.GET
     },
     update: {
-      url: '/results/:id',
+      url: '/results',
       method: Method.PUT
     },
     delete: {
-      url: '/results/:id',
+      url: '/results',
       method: Method.DELETE
     }
   }

@@ -2,6 +2,7 @@ import { store } from 'quasar/wrappers'
 import { InjectionKey } from 'vue'
 import auth from './auth'
 import exercises from './exercises'
+import results from './results'
 
 import {
   createStore,
@@ -25,7 +26,8 @@ export default store(function (/* { ssrContext } */) {
   const Store = createStore<RootInterface>({
     modules: {
       auth,
-      exercises
+      exercises,
+      results
     },
     strict: !!process.env.DEBUGGING
   })

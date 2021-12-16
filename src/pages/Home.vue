@@ -13,8 +13,17 @@ export default {
     onMounted(async () => {
       await store.dispatch('login', { email: 'q@mail.ru', password: 'qqq55555' })
       await store.dispatch('getExercises')
-      // await store.dispatch('createExercise', { title: 'HHH111' })
-      // await store.dispatch('deleteExercise', { id: '61bb0c84a6ab125e2edb8dcd' })
+      // await store.dispatch('updateResult', {
+      //   data: {
+      //     date: '12.12.2021',
+      //     quantity: {
+      //       1: '152',
+      //       2: '16'
+      //     }
+      //   },
+      //   id: '61bb2e396bf5f6ee064327b6'
+      // })
+      await store.dispatch('deleteResult', { id: '61bb31640ac285bcb2536889' })
       console.log(store.getters.exercises)
     })
   }
