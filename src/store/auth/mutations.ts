@@ -1,14 +1,14 @@
 import { MutationTree } from 'vuex'
-import { IUser, StateInterface } from './types'
+import { IUser, StateInterface, Mutations } from './types'
 
 const mutations: MutationTree<StateInterface> = {
-  setAuth (state) {
+  [Mutations.SET_AUTH] (state) {
     state.auth = !state.auth
   },
-  setUser (state, payload: IUser) {
+  [Mutations.SET_USER] (state, payload: IUser) {
     state.user = payload
   },
-  setLogout (state) {
+  [Mutations.SET_LOGOUT] (state) {
     state.user = null
   }
 }

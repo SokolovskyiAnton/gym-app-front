@@ -1,32 +1,6 @@
-import { Method, ContentType } from '../api/constans'
+import { Method, ContentType, IData, EndpointConfig, IErrorEvents } from '../api/constans'
 import NotificationService from './notifyService'
 import axios, { AxiosRequestConfig, AxiosInstance, AxiosResponse } from 'axios'
-
-export type IData = {
-  data: object | [];
-}
-
-interface IResponseDataParams {
-  data: IData;
-}
-
-interface EndpointConfig {
-  url: string;
-  method?: Method;
-  contentType?: ContentType;
-  paginated?: boolean;
-}
-
-interface IErrorEvents {
-  response: {
-    config: object;
-    data: object;
-    headers: object;
-    request: object;
-    status: number;
-    statusText: string;
-  }
-}
 
 export class ApiService {
   config: AxiosRequestConfig
@@ -77,7 +51,7 @@ export class ApiService {
       data
     }
     const request = this.client.request({ ...this.config, ...config })
-    const resolve = (res: IResponseDataParams) => res.data
+    const resolve = (res: IData) => res.data
     const reject = (error: IErrorEvents) => ApiService.dispatchErrorHandling(error)
 
     return request.then(resolve).catch(reject)

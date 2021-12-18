@@ -1,4 +1,4 @@
-import { IData } from 'src/services/apiService'
+import { IData } from 'src/api/constans'
 
 export interface IUser extends IData {
   username: string;
@@ -23,4 +23,10 @@ export interface SignUpForm {
 export interface StateInterface {
   user: IUser | null,
   auth: boolean
+}
+
+export enum Mutations {
+  SET_AUTH = 'setAuth',
+  SET_USER = 'setUser',
+  SET_LOGOUT = 'setLogout'
 }

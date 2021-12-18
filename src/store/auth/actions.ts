@@ -2,6 +2,7 @@ import { ActionTree } from 'vuex'
 import { RootInterface } from '../index'
 import { IRefreshToken, IUser, LoginResponse, SignUpForm, StateInterface } from './types'
 import { api } from 'boot/axios'
+import { Cookies } from 'quasar'
 
 const actions: ActionTree<StateInterface, RootInterface> = {
   async login ({ commit }, payload: LoginResponse) {
@@ -25,6 +26,8 @@ const actions: ActionTree<StateInterface, RootInterface> = {
   async logout ({ commit }) {
     try {
       await api.request(api.urls.auth.logout)
+      localStorage.removeItem('token')
+      Cookies.remove('token')
       commit('setLogout')
       commit('setAuth')
     } catch (e) {

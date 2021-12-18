@@ -1,17 +1,17 @@
 import { MutationTree } from 'vuex'
-import { IExercise, StateInterface } from './types'
+import { IExercise, StateInterface, Mutations } from './types'
 
 const mutations: MutationTree<StateInterface> = {
-  setExercises (state, payload: Array<IExercise>) {
+  [Mutations.SET_EXERCISES] (state, payload: Array<IExercise>) {
     state.exercises = payload
   },
-  setExercise (state, payload: IExercise) {
+  [Mutations.SET_EXERCISE] (state, payload: IExercise) {
     state.exercise = payload
   },
-  setNewExercise (state, payload: IExercise) {
+  [Mutations.SET_NEW_EXERCISE] (state, payload: IExercise) {
     state.exercises.push(payload)
   },
-  deleteExercise (state, payload) {
+  [Mutations.DELETE_EXERCISE] (state, payload) {
     state.exercises = state.exercises.filter(exercise => exercise._id !== payload.id)
   }
 }

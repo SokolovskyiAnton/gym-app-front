@@ -1,4 +1,4 @@
-import { IData } from 'src/services/apiService'
+import { IData } from 'src/api/constans'
 
 export interface IResult {
   date: string;
@@ -14,4 +14,11 @@ export interface IExercise extends IData {
 export interface StateInterface {
   exercises: Array<IExercise>,
   exercise: IExercise | null
+}
+
+export enum Mutations {
+  SET_EXERCISES = 'setExercises',
+  SET_EXERCISE = 'setExercise',
+  DELETE_EXERCISE = 'deleteExercise',
+  SET_NEW_EXERCISE = 'setNewExercise'
 }
