@@ -3,7 +3,7 @@ import { RootInterface } from '../index'
 import { IExercise, StateInterface } from './types'
 
 const getters: GetterTree<StateInterface, RootInterface> = {
-  exercises (state): Array<IExercise> | [] {
+  exercises (state: StateInterface): Array<IExercise> | [] {
     return state.exercises
   },
   exercise (state): IExercise | null {

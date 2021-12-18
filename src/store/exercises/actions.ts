@@ -9,7 +9,7 @@ const actions: ActionTree<StateInterface, RootInterface> = {
       const exercises = await api.request(api.urls.exercises.getAll) as IExercise
       commit('setExercises', exercises)
     } catch (e) {
-      console.log(e)
+      return Promise.reject(e)
     }
   },
   async getExercise ({ commit }, params) {
@@ -17,7 +17,7 @@ const actions: ActionTree<StateInterface, RootInterface> = {
       const exercise = await api.request(api.urls.exercises.get, {}, params)
       commit('setExercise', exercise)
     } catch (e) {
-      console.log(e)
+      return Promise.reject(e)
     }
   },
   async createExercise ({ commit }, payload) {
@@ -25,14 +25,14 @@ const actions: ActionTree<StateInterface, RootInterface> = {
       const exercise = await api.request(api.urls.exercises.create, payload)
       commit('setNewExercise', exercise)
     } catch (e) {
-      console.log(e)
+      return Promise.reject(e)
     }
   },
   async updateExercise (_, payload) {
     try {
       await api.request(api.urls.exercises.update, payload)
     } catch (e) {
-      console.log(e)
+      return Promise.reject(e)
     }
   },
   async deleteExercise ({ commit }, payload) {
@@ -40,7 +40,7 @@ const actions: ActionTree<StateInterface, RootInterface> = {
       await api.request(api.urls.exercises.delete, payload)
       commit('deleteExercise', payload)
     } catch (e) {
-      console.log(e)
+      return Promise.reject(e)
     }
   }
 }

@@ -9,9 +9,12 @@ import {
   Store as VuexStore,
   useStore as vuexUseStore
 } from 'vuex'
+
 // TODO find info about validation of modules
+
 export interface RootInterface {
-  example: unknown
+  auth: unknown;
+  exercises: unknown;
 }
 
 declare module '@vue/runtime-core' {
@@ -22,8 +25,8 @@ declare module '@vue/runtime-core' {
 
 export const storeKey: InjectionKey<VuexStore<RootInterface>> = Symbol('vuex-key')
 
-export default store(function (/* { ssrContext } */) {
-  const Store = createStore<RootInterface>({
+export default store(function () {
+  const Store = createStore({
     modules: {
       auth,
       exercises,

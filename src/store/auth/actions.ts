@@ -12,14 +12,14 @@ const actions: ActionTree<StateInterface, RootInterface> = {
       commit('setAuth')
       return user
     } catch (e) {
-      console.log(e)
+      return Promise.reject(e)
     }
   },
   async signup (_, payload: SignUpForm) {
     try {
       await api.request(api.urls.auth.signup, payload)
     } catch (e) {
-      console.log(e)
+      return Promise.reject(e)
     }
   },
   async logout ({ commit }) {
@@ -28,7 +28,7 @@ const actions: ActionTree<StateInterface, RootInterface> = {
       commit('setLogout')
       commit('setAuth')
     } catch (e) {
-      console.log(e)
+      return Promise.reject(e)
     }
   },
   async refresh () {
@@ -36,7 +36,7 @@ const actions: ActionTree<StateInterface, RootInterface> = {
       const token = await api.request(api.urls.auth.refresh) as IRefreshToken
       localStorage.setItem('token', token.accessToken)
     } catch (e) {
-      console.log(e)
+      return Promise.reject(e)
     }
   }
 }

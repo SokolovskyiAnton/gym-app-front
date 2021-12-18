@@ -17,6 +17,17 @@ interface EndpointConfig {
   paginated?: boolean;
 }
 
+interface IErrorEvents {
+  response: {
+    config: object;
+    data: object;
+    headers: object;
+    request: object;
+    status: number;
+    statusText: string;
+  }
+}
+
 export class ApiService {
   config: AxiosRequestConfig
   client: AxiosInstance
@@ -44,7 +55,7 @@ export class ApiService {
     const responseSuccessInterceptor = (response: AxiosResponse): AxiosResponse => {
       return response
     }
-    const errorInterceptor = (error: ErrorEvent) => {
+    const errorInterceptor = (error: IErrorEvents) => {
       return Promise.reject(error)
     }
 
@@ -53,9 +64,7 @@ export class ApiService {
   }
 
   request<T, K> (endpointConfig: EndpointConfig, payload?: T, params?: K) {
-    const {
-      url, method = Method.GET, contentType = ContentType.JSON
-    } = endpointConfig
+    const { url, method = Method.GET, contentType = ContentType.JSON } = endpointConfig
     const data = payload
     const config: AxiosRequestConfig = {
       headers: {
@@ -69,12 +78,39 @@ export class ApiService {
     }
     const request = this.client.request({ ...this.config, ...config })
     const resolve = (res: IResponseDataParams) => res.data
-    const reject = (error: ErrorEvent) => ApiService.displayError('Error', error.message)
+    const reject = (error: IErrorEvents) => ApiService.dispatchErrorHandling(error)
 
     return request.then(resolve).catch(reject)
   }
 
-  static displayError (caption: string, message: string) {
-    NotificationService.createNotification(caption, message)
+  static displayError (message: string) {
+    NotificationService.createNotification(message)
+  }
+
+  static dispatchErrorHandling (error: IErrorEvents) {
+    const status = error?.response?.status || 404
+    const isBadRequest = status === 400
+    const isUnauthorized = status === 401
+    const isForbidden = status === 403
+    const isNotFound = status === 404
+    const isServerError = status >= 500
+
+    if (isBadRequest) {
+      const message = 'Wrong request.'
+      ApiService.displayError(message)
+    } else if (isUnauthorized) {
+      const message = "Password or email aren't correct."
+      ApiService.displayError(message)
+    } else if (isForbidden) {
+      const message = 'Access is denied.'
+      ApiService.displayError(message)
+    } else if (isNotFound) {
+      const message = 'Not found.'
+      ApiService.displayError(message)
+    } else if (isServerError) {
+      const message = 'Server error.'
+      ApiService.displayError(message)
+    }
+    return Promise.reject(error)
   }
 }

@@ -1,12 +1,10 @@
 import { Notify } from 'quasar'
 
 class NotificationService {
-  static createNotification (caption: string, message: string, type = 'Error') {
-    const defaultMessage = NotificationService.getCapitalizedText(type)
+  static createNotification (message: string, type = 'negative') {
     return Notify.create({
       type,
-      message: message || defaultMessage,
-      caption
+      message: message
     })
   }
 

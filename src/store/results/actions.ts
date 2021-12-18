@@ -8,7 +8,7 @@ const actions: ActionTree<StateInterface, RootInterface> = {
     try {
       await api.request(api.urls.results.create, payload)
     } catch (e) {
-      console.log(e)
+      return Promise.reject(e)
     }
   },
   async updateResult (_, payload) {
@@ -16,14 +16,14 @@ const actions: ActionTree<StateInterface, RootInterface> = {
     try {
       await api.request(api.urls.results.update, payload)
     } catch (e) {
-      console.log(e)
+      return Promise.reject(e)
     }
   },
   async deleteResult (_, payload) {
     try {
       await api.request(api.urls.results.delete, payload)
     } catch (e) {
-      console.log(e)
+      return Promise.reject(e)
     }
   }
 }
