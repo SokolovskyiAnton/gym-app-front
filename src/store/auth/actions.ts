@@ -3,6 +3,7 @@ import { RootInterface } from '../index'
 import { IRefreshToken, IUser, LoginResponse, SignUpForm, StateInterface } from './types'
 import { api } from 'boot/axios'
 import { Cookies } from 'quasar'
+import { $router } from 'src/boot/router'
 
 // TODO create dark mode in localstorage
 // TODO create forgot password logic in backend
@@ -35,7 +36,7 @@ const actions: ActionTree<StateInterface, RootInterface> = {
       Cookies.remove('token')
       commit('setLogout')
       commit('setAuth')
-      window.location.href = 'http://localhost:8080/#/auth/login'
+      $router.push({ name: 'login' })
     } catch (e) {
       return Promise.reject(e)
     }
