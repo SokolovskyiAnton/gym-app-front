@@ -1,6 +1,7 @@
-import { Method, ContentType, IData, EndpointConfig, IErrorEvents } from '../api/constans'
+import { ContentType, EndpointConfig, IData, IErrorEvents, Method } from '../api/constans'
 import NotificationService from './notifyService'
-import axios, { AxiosRequestConfig, AxiosInstance, AxiosResponse } from 'axios'
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
+import Store from 'src/store/index'
 
 export class ApiService {
   config: AxiosRequestConfig
@@ -29,7 +30,17 @@ export class ApiService {
     const responseSuccessInterceptor = (response: AxiosResponse): AxiosResponse => {
       return response
     }
-    const errorInterceptor = (error: IErrorEvents) => {
+    const errorInterceptor = async (error: IErrorEvents) => {
+      if (error.response.status === 401) {
+        const store = Store()
+        try {
+          await store.dispatch('refresh')
+          return config({ ...error.response.config })
+        } catch (error) {
+          await store.dispatch('logout')
+          return Promise.reject(error)
+        }
+      }
       return Promise.reject(error)
     }
 

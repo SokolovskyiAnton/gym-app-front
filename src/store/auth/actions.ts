@@ -4,6 +4,11 @@ import { IRefreshToken, IUser, LoginResponse, SignUpForm, StateInterface } from 
 import { api } from 'boot/axios'
 import { Cookies } from 'quasar'
 
+// TODO create dark mode in localstorage
+// TODO create forgot password logic in backend
+// TODO validator of password
+// TODO show success notify after register
+// TODO implement CAPTCHA
 const actions: ActionTree<StateInterface, RootInterface> = {
   async login ({ commit }, payload: LoginResponse) {
     try {
@@ -30,6 +35,7 @@ const actions: ActionTree<StateInterface, RootInterface> = {
       Cookies.remove('token')
       commit('setLogout')
       commit('setAuth')
+      window.location.href = 'http://localhost:8080/#/auth/login'
     } catch (e) {
       return Promise.reject(e)
     }

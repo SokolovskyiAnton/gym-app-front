@@ -25,11 +25,14 @@ export interface EndpointConfig {
 
 export interface IErrorEvents {
   response: {
-    config: object;
+    config: {
+      url: string
+    };
     data: object;
     headers: object;
     request: object;
     status: number;
     statusText: string;
+    _retry: boolean;
   }
 }

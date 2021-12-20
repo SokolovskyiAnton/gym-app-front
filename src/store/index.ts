@@ -1,4 +1,3 @@
-import { store } from 'quasar/wrappers'
 import { InjectionKey } from 'vue'
 import auth from './auth'
 import exercises from './exercises'
@@ -25,7 +24,7 @@ declare module '@vue/runtime-core' {
 
 export const storeKey: InjectionKey<VuexStore<RootInterface>> = Symbol('vuex-key')
 
-export default store(function () {
+export default function () {
   const Store = createStore({
     modules: {
       auth,
@@ -36,7 +35,7 @@ export default store(function () {
   })
 
   return Store
-})
+}
 
 export function useStore () {
   return vuexUseStore(storeKey)
