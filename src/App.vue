@@ -8,3 +8,7 @@ export default defineComponent({
   name: 'app'
 })
 </script>
+
+<style lang="stylus">
+
+</style>

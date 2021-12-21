@@ -1,0 +1,34 @@
+add-color(name, lightModeValue, darkModeValue = false)
+  body
+    {name}: lightModeValue
+
+  if darkModeValue
+    .body--dark
+      {name}: darkModeValue
+
+$page-color = #EAECEF
+$page-color-dark-mode = #05060F
+add-color('--gym-page-color', $page-color, $page-color-dark-mode)
+
+$text-color = #05060F
+$text-color-dark-mode = #EAECEF
+add-color('--gym-text-color', $text-color, $text-color-dark-mode)
+
+:root
+  --q-color-primary: #1976D2
+  --q-color-secondary: #26A69A
+  --q-color-accent: #9C27B0
+  --q-color-dark: #888212
+  --q-color-info: #31CCEC
+  --q-color-positive: #21BA45
+  --q-color-negative: #C10015
+  --q-color-warning: #F2C037
+
+// Dark mode
+.body--dark
+  --q-color-primary: #6188FF
+  --q-color-accent: #6188FF
+  --q-color-dark: #14151A
+  --q-color-positive: #0ECB81
+  --q-color-negative: #EA3943
+  --q-color-warning: #F0B90B

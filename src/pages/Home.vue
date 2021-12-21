@@ -1,11 +1,13 @@
 <template>
-  <h1>Hi jeeeens!</h1>
+  <q-page>
+    <q-toggle @update:model-value="$q.dark.toggle()" :model-value="$q.dark.isActive"/>
+    <h5 class="default-text">Hello</h5>
+  </q-page>
 </template>
 
 <script lang="ts">
 import { useStore } from 'src/store'
 import { onMounted } from 'vue'
-
 export default {
   name: 'Home',
   setup () {

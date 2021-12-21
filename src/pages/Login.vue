@@ -1,5 +1,6 @@
 <template>
-  <h3>Login</h3>
+  <q-page>
+  </q-page>
 </template>
 
 <script>
@@ -7,7 +8,3 @@ export default {
   name: 'Login'
 }
 </script>
-
-<style scoped>
-
-</style>
