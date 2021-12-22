@@ -1,6 +1,106 @@
 @require "colors"
+@require "quasar.variables"
+@require "text"
+@require "buttons"
+
+body
+  color: var(--gym-text-color)
+  background var(--gym-page-color)
 
 .q-page-container
   background var(--gym-page-color)
-.default-text
+
+.q-input
+  border-radius 8px
+  outline none
+
+.q-field__suffix
+  color var(--gym-text-color-1)
+
+.q-field--outlined
+  .q-field__control
+    border-radius var(--gym-input-border-radius)
+
+.container
+  width: 100%
+  margin-right: auto
+  margin-left: auto
+
+  @media screen and (max-width: $breakpoint-sm-max)
+    padding-left $space-md.x
+    padding-right: $space-md.x
+
+  @media (min-width 576px)
+    max-width 100%
+
+  @media (min-width $breakpoint-xs)
+    max-width 720px
+
+  @media (min-width $breakpoint-md-min)
+    max-width 960px
+
+  @media (min-width 1200px)
+    max-width 1140px
+
+.auth-main-block
+  position relative
+  width 100%
+  padding-top: 60px
+  padding-bottom: 30px
+  padding-left: 15px
+  padding-right: 15px
+  z-index 1
+.auth-main
+  width: 100%
+  max-width: 540px
+  text-align: center
+
+.auth-main .auth-title
+  font-size 2em
+  font-weight: bold
   color: var(--gym-text-color)
+  margin-bottom: 30px
+
+.auth-main .card
+  width: 100%
+  padding: 25px
+  border-radius: 20px
+  background-color: var(--gym-page-color)
+  border 1px solid var(--gym-text-color-4)
+
+.auth-main .title
+  font-size 1.5em
+  font-weight: 500
+  color: var(--gym-page-color-1)
+  margin-top: 10px
+
+.form-block
+  text-align: left
+  width: 100%
+  padding-top: 20px
+  padding-bottom: 30px
+
+.form-block .label
+  width: 100%
+  color: var(--gym-text-color)
+  font-size 1.125em
+  margin: $space-sm.x
+
+.form-block .label-grey
+  display: inline-flex
+  margin-top 10px
+  color: var(--gym-text-color-1)
+  text-decoration: none
+  font-size 1.125em
+
+.label-grey:hover
+  color: var(--gym-brand-blue)
+
+.auth-sub-title
+  color: #a5a8a9
+  margin-top: 25px
+
+.auth-sub-title a
+  color: var(--gym-brand-blue)
+  text-decoration none
+

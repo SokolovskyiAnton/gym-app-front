@@ -1,0 +1,70 @@
+$input-border-radius = 8px
+$button-border-radius = 8px
+
+$large-font-size = 20px
+$large-line-height = 32px
+
+$regular-font-size = 16px
+$regular-line-height = 24px
+
+$small-font-size = 14px
+$small-line-height = 24px
+
+$extra-small-font-size = 12px
+$extra-small-line-height = 18px
+
+// Breakpoint
+$breakpoint-xs = 767px
+$breakpoint-sm = 991px
+$breakpoint-md = 1199px
+$breakpoint-lg = 1919px
+
+$space-base   ?= 16px
+$space-x-base ?= $space-base
+$space-y-base ?= $space-base
+
+$space-none ?= { x: 0, y: 0 }
+$space-xs   ?= { x: ($space-x-base * .25), y: ($space-y-base * .25) }
+$space-sm   ?= { x: ($space-x-base * .5),  y: ($space-y-base * .5)  }
+$space-md   ?= { x: $space-x-base,         y: $space-y-base         }
+$space-lg   ?= { x: ($space-x-base * 1.5), y: ($space-y-base * 1.5) }
+$space-xl   ?= { x: ($space-x-base * 3),   y: ($space-y-base * 3)   }
+
+$sizes ?= {
+  xs: 0,                  // Extra small screen
+  sm: $breakpoint-xs + 1, // Small screen
+  md: $breakpoint-sm + 1, // Medium screen
+  lg: $breakpoint-md + 1, // Large screen
+  xl: $breakpoint-lg + 1  // Extra large screen
+}
+
+$breakpoint-xs-min ?= 0
+$breakpoint-xs-max ?= $breakpoint-xs
+
+$breakpoint-sm-min ?= $sizes.sm
+$breakpoint-sm-max ?= $breakpoint-sm
+
+$breakpoint-md-min ?= $sizes.md
+$breakpoint-md-max ?= $breakpoint-md
+
+$breakpoint-lg-min ?= $sizes.lg
+$breakpoint-lg-max ?= $breakpoint-lg
+
+$breakpoint-xl-min ?= $sizes.xl
+$breakpoint-xl-max ?= 9999px
+
+:root
+  --gym-input-border-radius: $input-border-radius
+  --gym-button-border-radius: $button-border-radius
+
+  --gym-large-font-size: $large-font-size
+  --gym-large-line-height: $large-line-height
+
+  --gym-regular-font-size: $regular-font-size
+  --gym-regular-line-height: $regular-line-height
+
+  --gym-small-font-size: $small-font-size
+  --gym-small-line-height: $small-line-height
+
+  --gym-extra-small-font-size: $extra-small-font-size
+  --gym-extra-small-line-height: $extra-small-line-height

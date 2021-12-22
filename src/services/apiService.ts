@@ -31,7 +31,7 @@ export class ApiService {
       return response
     }
     const errorInterceptor = async (error: IErrorEvents) => {
-      if (error.response.status === 401) {
+      if (error.response.data.message === 'Token is expired') {
         const store = Store()
         try {
           await store.dispatch('refresh')

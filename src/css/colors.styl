@@ -6,13 +6,58 @@ add-color(name, lightModeValue, darkModeValue = false)
     .body--dark
       {name}: darkModeValue
 
-$page-color = #EAECEF
-$page-color-dark-mode = #05060F
+
+$brand-blue = #1550F0
+$brand-blue-dark-mode = #6188FF
+add-color('--gym-brand-blue', $brand-blue, $brand-blue-dark-mode)
+
+$page-color = #fefffe
+$page-color-dark-mode = #2c3338
 add-color('--gym-page-color', $page-color, $page-color-dark-mode)
 
-$text-color = #05060F
-$text-color-dark-mode = #EAECEF
+$text-color = #30373d
+$text-color-dark-mode = #fafafa
 add-color('--gym-text-color', $text-color, $text-color-dark-mode)
+
+$text-color-1 = #58667E
+$text-color-1-dark-mode = #848E9C
+add-color('--gym-text-color-1', $text-color-1, $text-color-1-dark-mode)
+
+$text-color-2 = #808A9D
+$text-color-2-dark-mode = #A1A7BB
+add-color('--gym-text-color-2', $text-color-2, $text-color-2-dark-mode)
+
+$text-color-3 = #A6B0C3
+$text-color-3-dark-mode = #858CA2
+add-color('--gym-text-color-3', $text-color-3, $text-color-3-dark-mode)
+
+$text-color-4 = #CFD6E4
+$text-color-4-dark-mode = #646B80
+add-color('--gym-text-color-4', $text-color-4, $text-color-4-dark-mode)
+
+$text-color-5 = #EFF2F5
+$text-color-5-dark-mode = #323546
+add-color('--gym-text-color-5', $text-color-5, $text-color-5-dark-mode)
+
+$text-color-6 = #F4F5F6
+$text-color-6-dark-mode = #222531
+add-color('--gym-text-color-6', $text-color-6, $text-color-6-dark-mode)
+
+$text-color-7 = #F8FAFD
+$text-color-7-dark-mode = #171924
+add-color('--gym-text-color-7', $text-color-7, $text-color-7-dark-mode)
+
+$text-color-8 = #FAFAFA
+$text-color-8-dark-mode = #0A0E11
+add-color('--gym-text-color-8', $text-color-8, $text-color-8-dark-mode)
+
+$btn-color = #5b6065
+$btn-color-dark-mode = #5b6065
+add-color('--gym-btn-color', $btn-color, $btn-color-dark-mode)
+
+$btn-background = #f3f3f3
+$btn-background-dark-mode = #ffffff
+add-color('--gym-btn-background', $btn-background, $btn-background-dark-mode)
 
 :root
   --q-color-primary: #1976D2
@@ -32,3 +77,4 @@ add-color('--gym-text-color', $text-color, $text-color-dark-mode)
   --q-color-positive: #0ECB81
   --q-color-negative: #EA3943
   --q-color-warning: #F0B90B
+  --q-dark-page: #2c3338

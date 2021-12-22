@@ -5,6 +5,7 @@ import {
   createWebHistory
 } from 'vue-router'
 import routes from './routes'
+import { Cookies } from 'quasar'
 
 export default function () {
   const createHistory = process.env.SERVER
@@ -17,6 +18,15 @@ export default function () {
     history: createHistory(
       process.env.MODE === 'ssr' ? void 0 : process.env.VUE_ROUTER_BASE
     )
+  })
+  Router.beforeEach((to, from, next) => {
+    const currentUser = Cookies.has('token')
+    const requireAuth = to.matched.some(m => m.meta.auth)
+    if (!currentUser && requireAuth) {
+      next({ name: 'login' })
+    } else {
+      next()
+    }
   })
   return Router
 }

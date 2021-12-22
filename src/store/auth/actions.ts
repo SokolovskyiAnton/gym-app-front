@@ -36,9 +36,10 @@ const actions: ActionTree<StateInterface, RootInterface> = {
       Cookies.remove('token')
       commit('setLogout')
       commit('setAuth')
-      $router.push({ name: 'login' })
     } catch (e) {
       return Promise.reject(e)
+    } finally {
+      $router.push({ name: 'login' })
     }
   },
   async refresh () {

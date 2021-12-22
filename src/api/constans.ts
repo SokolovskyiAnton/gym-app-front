@@ -28,7 +28,9 @@ export interface IErrorEvents {
     config: {
       url: string
     };
-    data: object;
+    data: {
+      message?: string
+    };
     headers: object;
     request: object;
     status: number;
