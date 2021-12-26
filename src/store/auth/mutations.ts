@@ -2,9 +2,6 @@ import { MutationTree } from 'vuex'
 import { IUser, StateInterface, Mutations } from './types'
 
 const mutations: MutationTree<StateInterface> = {
-  [Mutations.SET_AUTH] (state) {
-    state.auth = !state.auth
-  },
   [Mutations.SET_USER] (state, payload: IUser) {
     state.user = payload
   },

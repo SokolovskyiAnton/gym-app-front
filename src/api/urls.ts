@@ -19,6 +19,14 @@ export const urlsApp = {
     refresh: {
       url: 'auth/refresh',
       method: Method.POST
+    },
+    forgot_password: {
+      url: 'auth/forgot-password',
+      method: Method.POST
+    },
+    reset_password: {
+      url: 'auth/reset-password',
+      method: Method.POST
     }
   },
   exercises: {

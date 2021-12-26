@@ -1,10 +1,16 @@
 <template>
-  <h3>Registr</h3>
+  <q-page>
+    <register-form />
+  </q-page>
 </template>
 
 <script>
+import RegisterForm from 'components/Register/RegisterForm.vue'
 export default {
-  name: 'Registration'
+  name: 'registration',
+  components: {
+    RegisterForm
+  }
 }
 </script>
 

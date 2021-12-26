@@ -23,6 +23,7 @@
 </template>
 
 <script lang="ts">
+// TODO Create new error page
 import { defineComponent } from 'vue'
 
 export default defineComponent({

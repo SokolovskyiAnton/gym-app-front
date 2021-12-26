@@ -1,4 +1,5 @@
 import { RouteRecordRaw } from 'vue-router'
+import { isGuest } from 'src/router/guards'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -15,7 +16,13 @@ const routes: RouteRecordRaw[] = [
     component: () => import('layouts/EmptyLayout.vue'),
     children: [
       { path: 'login', name: 'login', component: () => import('pages/Login.vue') },
-      { path: 'signup', name: 'signup', component: () => import('pages/Registration.vue') }
+      { path: 'signup', name: 'signup', component: () => import('pages/Registration.vue') },
+      {
+        path: 'forgot-password',
+        name: 'forgot-password',
+        component: () => import('pages/ForgotPassword.vue'),
+        beforeEnter: isGuest
+      }
     ]
   },
   {
