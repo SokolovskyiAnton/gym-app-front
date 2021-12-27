@@ -7,6 +7,9 @@ const mutations: MutationTree<StateInterface> = {
   },
   [Mutations.SET_LOGOUT] (state) {
     state.user = null
+  },
+  [Mutations.SET_AUTH] (state) {
+    state.auth = true
   }
 }
 

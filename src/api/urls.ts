@@ -27,6 +27,10 @@ export const urlsApp = {
     reset_password: {
       url: 'auth/reset-password',
       method: Method.POST
+    },
+    get_profile: {
+      url: 'auth/get-profile',
+      method: Method.GET
     }
   },
   exercises: {

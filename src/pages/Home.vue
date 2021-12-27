@@ -14,6 +14,7 @@ export default {
     const store = useStore()
     onMounted(async () => {
       try {
+        await store.dispatch('getProfile')
         await store.dispatch('getExercises')
       } catch (e) {
         console.error(e)

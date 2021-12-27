@@ -61,7 +61,7 @@ export default {
     const store = useStore()
     const loading = ref<boolean>(false)
     const isRequestAllow = ref<boolean>(true)
-    const timer = ref<number>(10)
+    const timer = ref<number>(60)
     const v$ = useVuelidate(rules, form)
     const onSubmitEmail = async () => {
       if (v$.value.$invalid) {
@@ -74,8 +74,8 @@ export default {
       try {
         loading.value = true
         await store.dispatch('forgotPassword', formData)
-        showSuccessNotify()
         retrySendEmail()
+        showSuccessNotify()
       } catch (e) {
         console.error(e)
       } finally {
@@ -87,7 +87,7 @@ export default {
         isRequestAllow.value = false
         if (!timer.value) {
           clearInterval(timerId)
-          timer.value = 10
+          timer.value = 60
           isRequestAllow.value = true
           return
         }

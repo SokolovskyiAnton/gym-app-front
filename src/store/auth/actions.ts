@@ -8,12 +8,20 @@ import { $router } from 'src/boot/router'
 // TODO validator of password
 // TODO implement CAPTCHA
 const actions: ActionTree<StateInterface, RootInterface> = {
+  async getProfile ({ commit }) {
+    try {
+      const user = await api.request(api.urls.auth.get_profile)
+      commit('setUser', user)
+    } catch (e) {
+      return Promise.reject(e)
+    }
+  },
   async login ({ commit }, payload: LoginResponse) {
     try {
       const user = await api.request(api.urls.auth.login, payload) as IUser
       localStorage.setItem('token', user.accessToken)
       commit('setUser', user)
-      return user
+      commit('setAuth')
     } catch (e) {
       return Promise.reject(e)
     }
