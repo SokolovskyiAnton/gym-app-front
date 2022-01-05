@@ -43,7 +43,7 @@
 </template>
 
 <script lang="ts">
-import { reactive, ref } from 'vue'
+import { reactive, ref, onUnmounted } from 'vue'
 import { useStore } from 'src/store'
 import { useVuelidate } from '@vuelidate/core'
 import { required, email } from '@vuelidate/validators'
@@ -63,6 +63,7 @@ export default {
     const isRequestAllow = ref<boolean>(true)
     const timer = ref<number>(60)
     const v$ = useVuelidate(rules, form)
+    let timerId: any
     const onSubmitEmail = async () => {
       if (v$.value.$invalid) {
         v$.value.$touch()
@@ -72,19 +73,20 @@ export default {
         email: form.email
       }
       try {
+        isRequestAllow.value = false
         loading.value = true
         await store.dispatch('forgotPassword', formData)
         retrySendEmail()
         showSuccessNotify()
       } catch (e) {
+        isRequestAllow.value = true
         console.error(e)
       } finally {
         loading.value = false
       }
     }
     const retrySendEmail = () => {
-      const timerId = setInterval(() => {
-        isRequestAllow.value = false
+      timerId = setInterval(() => {
         if (!timer.value) {
           clearInterval(timerId)
           timer.value = 60
@@ -102,6 +104,9 @@ export default {
         timeout: 6000
       })
     }
+    onUnmounted(() => {
+      clearInterval(timerId)
+    })
     return {
       form,
       onSubmitEmail,

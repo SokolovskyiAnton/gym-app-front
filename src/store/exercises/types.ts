@@ -2,7 +2,7 @@ import { IData } from 'src/api/constans'
 
 export interface IResult {
   date: string;
-  quantity: object;
+  results: [];
   _id: string;
 }
 export interface IExercise extends IData {

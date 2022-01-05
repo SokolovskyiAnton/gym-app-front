@@ -2,6 +2,9 @@ import { InjectionKey } from 'vue'
 import auth from './auth'
 import exercises from './exercises'
 import results from './results'
+import categories from './categories'
+import calendar from './calendar'
+import program from './programs'
 
 import {
   createStore,
@@ -29,7 +32,10 @@ export default function () {
     modules: {
       auth,
       exercises,
-      results
+      results,
+      categories,
+      calendar,
+      program
     },
     strict: !!process.env.DEBUGGING
   })

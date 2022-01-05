@@ -76,5 +76,47 @@ export const urlsApp = {
       url: '/results',
       method: Method.DELETE
     }
+  },
+  categories: {
+    getAll: {
+      url: '/categories',
+      method: Method.GET
+    }
+  },
+  calendar: {
+    getAll: {
+      url: '/calendar',
+      method: Method.GET
+    },
+    create: {
+      url: '/calendar',
+      method: Method.POST
+    },
+    update: {
+      url: '/calendar',
+      method: Method.PUT
+    },
+    delete: {
+      url: '/calendar',
+      method: Method.DELETE
+    }
+  },
+  programs: {
+    getAll: {
+      url: '/programs',
+      method: Method.GET
+    },
+    create: {
+      url: '/programs',
+      method: Method.POST
+    },
+    update: {
+      url: '/programs',
+      method: Method.PUT
+    },
+    delete: {
+      url: '/programs',
+      method: Method.DELETE
+    }
   }
 }

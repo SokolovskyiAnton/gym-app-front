@@ -1,29 +1,17 @@
 <template>
   <q-page>
-    <q-toggle @update:model-value="$q.dark.toggle()" :model-value="$q.dark.isActive"/>
-    <h5 class="default-text">Hello</h5>
+    <calendar />
   </q-page>
 </template>
 
 <script lang="ts">
-import { useStore } from 'src/store'
-import { onMounted } from 'vue'
+// <q-toggle @update:model-value="$q.dark.toggle()" :model-value="$q.dark.isActive"/>
+
+import Calendar from 'components/Home/Calendar.vue'
 export default {
-  name: 'Home',
-  setup () {
-    const store = useStore()
-    onMounted(async () => {
-      try {
-        await store.dispatch('getProfile')
-        await store.dispatch('getExercises')
-      } catch (e) {
-        console.error(e)
-      }
-    })
+  name: 'home',
+  components: {
+    Calendar
   }
 }
 </script>
-
-<style scoped>
-
-</style>
