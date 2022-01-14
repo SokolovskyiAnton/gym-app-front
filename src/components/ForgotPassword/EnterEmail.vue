@@ -1,29 +1,40 @@
 <template>
-  <q-form @submit.prevent="onSubmitEmail" class="auth-main-block row justify-center items-center default-text">
+  <q-form
+    class="auth-main-block row justify-center items-center default-text"
+    @submit.prevent="onSubmitEmail"
+  >
     <div class="auth-main">
-      <div class="auth-title">Забыли пароль</div>
+      <div class="auth-title">
+        Забыли пароль
+      </div>
       <div class="card column">
         <div class="form-block">
-          <p class="label">Адрес электронной почты</p>
+          <p class="label">
+            Адрес электронной почты
+          </p>
           <q-input
             v-model.trim="form.email"
             type="email"
             placeholder="Введите email"
             outlined
             :error="v$.email.$error"
-            @blur="v$.email.$touch">
-            <template v-slot:error>
+            @blur="v$.email.$touch"
+          >
+            <template #error>
               <div
-                class="text-left text-negative"
                 v-for="error in v$.email.$errors"
                 :key="error"
+                class="text-left text-negative"
               >
-                {{emailErrors[error.$message]}}
+                {{ emailErrors[error.$message] }}
               </div>
             </template>
           </q-input>
-          <div v-if="!isRequestAllow" class="retry-send-email">
-            <i>Повторная поптыка через {{timer}} секунд.</i>
+          <div
+            v-if="!isRequestAllow"
+            class="retry-send-email"
+          >
+            <i>Повторная поптыка через {{ timer }} секунд.</i>
           </div>
         </div>
         <q-btn
@@ -36,7 +47,10 @@
         />
       </div>
       <div class="auth-sub-title">
-        Уже есть аккаунт ? <router-link to="/auth/login">Войти</router-link>
+        Уже есть аккаунт ?
+        <router-link to="/auth/login">
+          Войти
+        </router-link>
       </div>
     </div>
   </q-form>
@@ -50,7 +64,7 @@ import { required, email } from '@vuelidate/validators'
 import { emailErrors } from 'src/helpers/vuelidate'
 import { Notify } from 'quasar'
 export default {
-  name: 'enter-email',
+  name: 'EnterEmail',
   setup () {
     const form = reactive({
       email: ''

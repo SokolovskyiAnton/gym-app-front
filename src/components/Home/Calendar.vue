@@ -1,9 +1,13 @@
 <template>
   <div class="calendar">
-    <div class="calendar-block" :class="{'full-height': fullSize}">
+    <div
+      class="calendar-block"
+      :class="{'full': fullSize}"
+    >
+      <calendar-btn />
       <q-date
-        class="full-width"
         v-model="date"
+        class="full-width"
         minimal
         first-day-of-week="1"
         :locale="locale"
@@ -11,35 +15,31 @@
       />
     </div>
     <div class="flex justify-center">
-      <span @click="changeHeight" class="calendar-plank"></span>
+      <span
+        class="calendar-plank"
+        @click="changeHeight"
+      />
     </div>
   </div>
+  <board :date="date" />
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 // TODO create animation for calendar
-import { locale } from 'pages/constans'
+// TODO create opportunity to add a few programs
 import { computed, ref } from 'vue'
 import { useStore } from 'src/store'
+import { locale } from 'pages/constans'
+import Board from 'components/Home/Board.vue'
+import CalendarBtn from 'components/Home/CalendarBtn.vue'
 
-export default {
-  name: 'calendar',
-  setup () {
-    const store = useStore()
-    const fullSize = ref<boolean>(false)
-    const date = ref<string>('')
-    const events = computed(() => store.getters.events)
-    function changeHeight () {
-      fullSize.value = !fullSize.value
-    }
-    return {
-      changeHeight,
-      fullSize,
-      date,
-      locale,
-      events
-    }
-  }
+const store = useStore()
+const fullSize = ref<boolean>(false)
+const date = ref<string>('')
+const events = computed(() => store.getters.events)
+
+function changeHeight () {
+  fullSize.value = !fullSize.value
 }
 </script>
 
@@ -48,8 +48,12 @@ export default {
   background var(--gym-page-color-1)
   border-radius 10px
 .calendar-block
-  height 150px
+  height 180px
   overflow hidden
+  transition height .5s ease-in-out
+.full
+  height 320px
+  transition height .5s ease-in-out
 .calendar-plank
   display block
   text-align center

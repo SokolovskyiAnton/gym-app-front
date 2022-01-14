@@ -1,7 +1,6 @@
 import { InjectionKey } from 'vue'
 import auth from './auth'
 import exercises from './exercises'
-import results from './results'
 import categories from './categories'
 import calendar from './calendar'
 import program from './programs'
@@ -15,8 +14,7 @@ import {
 // TODO find info about validation of modules
 
 export interface RootInterface {
-  auth: unknown;
-  exercises: unknown;
+  auth: boolean;
 }
 
 declare module '@vue/runtime-core' {
@@ -32,7 +30,6 @@ export default function () {
     modules: {
       auth,
       exercises,
-      results,
       categories,
       calendar,
       program

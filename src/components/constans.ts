@@ -12,3 +12,14 @@ export interface LoginData {
 export interface ForgotPasswordProps {
   token: string | null;
 }
+
+export interface BoardProps {
+  date: string;
+}
+
+export interface BoardProgramIds {
+  exerciseId: string;
+  programId: string;
+  isTimer: boolean;
+  date: string;
+}

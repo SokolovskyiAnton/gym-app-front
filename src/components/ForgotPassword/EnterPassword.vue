@@ -1,10 +1,17 @@
 <template>
-  <q-form  @submit.prevent="onSubmitPassword" class="auth-main-block row justify-center items-center default-text">
+  <q-form
+    class="auth-main-block row justify-center items-center default-text"
+    @submit.prevent="onSubmitPassword"
+  >
     <div class="auth-main">
-      <div class="auth-title">Новый пароль</div>
+      <div class="auth-title">
+        Новый пароль
+      </div>
       <div class="card column">
         <div class="form-block">
-          <p class="label">Введите новый пароль</p>
+          <p class="label">
+            Введите новый пароль
+          </p>
           <q-input
             v-model.trim="form.newPassword"
             :type="isPasswordHidden ? 'password' : 'text'"
@@ -12,25 +19,28 @@
             outlined
             no-error-icon
             :error="v$.newPassword.$error"
-            @blur="v$.newPassword.$touch">
-            <template v-slot:append>
+            @blur="v$.newPassword.$touch"
+          >
+            <template #append>
               <q-icon
                 :name="isPasswordHidden ? 'visibility_off' : 'visibility'"
                 class="cursor-pointer"
                 @click="isPasswordHidden = !isPasswordHidden"
               />
             </template>
-            <template v-slot:error>
+            <template #error>
               <div
-                class="text-left text-negative"
                 v-for="error in v$.newPassword.$errors"
                 :key="error"
+                class="text-left text-negative"
               >
-                {{passwordErrors[error.$message]}}
+                {{ passwordErrors[error.$message] }}
               </div>
             </template>
           </q-input>
-          <p class="label">Повторите пароль</p>
+          <p class="label">
+            Повторите пароль
+          </p>
           <q-input
             v-model.trim="form.repeatPassword"
             :type="isPasswordHidden ? 'password' : 'text'"
@@ -38,21 +48,22 @@
             outlined
             no-error-icon
             :error="v$.repeatPassword.$error"
-            @blur="v$.repeatPassword.$touch">
-            <template v-slot:append>
+            @blur="v$.repeatPassword.$touch"
+          >
+            <template #append>
               <q-icon
                 :name="isPasswordHidden ? 'visibility_off' : 'visibility'"
                 class="cursor-pointer"
                 @click="isPasswordHidden = !isPasswordHidden"
               />
             </template>
-            <template v-slot:error>
+            <template #error>
               <div
-                class="text-left text-negative"
                 v-for="error in v$.repeatPassword.$errors"
                 :key="error"
+                class="text-left text-negative"
               >
-                {{passwordErrors[error.$message]}}
+                {{ passwordErrors[error.$message] }}
               </div>
             </template>
           </q-input>
@@ -67,7 +78,10 @@
         />
       </div>
       <div class="auth-sub-title">
-        Уже есть аккаунт ? <router-link to="/auth/login">Войти</router-link>
+        Уже есть аккаунт ?
+        <router-link to="/auth/login">
+          Войти
+        </router-link>
       </div>
     </div>
   </q-form>
@@ -83,7 +97,7 @@ import { passwordErrors } from 'src/helpers/vuelidate'
 import { Notify } from 'quasar'
 import { ForgotPasswordProps } from 'components/constans'
 export default {
-  name: 'enter-password',
+  name: 'EnterPassword',
   props: {
     token: {
       type: String,

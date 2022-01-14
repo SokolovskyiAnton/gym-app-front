@@ -1,7 +1,10 @@
 <template>
   <q-page>
-    <enter-email v-if="!token"/>
-    <enter-password v-else :token="token" />
+    <enter-email v-if="!token" />
+    <enter-password
+      v-else
+      :token="token"
+    />
   </q-page>
 </template>
 
@@ -12,7 +15,7 @@ import EnterEmail from 'components/ForgotPassword/EnterEmail.vue'
 import EnterPassword from 'components/ForgotPassword/EnterPassword.vue'
 
 export default {
-  name: 'forgot-password',
+  name: 'ForgotPassword',
   components: {
     EnterEmail,
     EnterPassword

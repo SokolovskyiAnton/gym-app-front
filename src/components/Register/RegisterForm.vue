@@ -1,28 +1,38 @@
 <template>
-  <q-form @submit.prevent="onSubmit" class="auth-main-block row justify-center items-center default-text">
+  <q-form
+    class="auth-main-block row justify-center items-center default-text"
+    @submit.prevent="onSubmit"
+  >
     <div class="auth-main">
-      <div class="auth-title">Создать аккаунт</div>
+      <div class="auth-title">
+        Создать аккаунт
+      </div>
       <div class="card column">
         <div class="form-block">
-          <p class="label">Адрес электронной почты</p>
+          <p class="label">
+            Адрес электронной почты
+          </p>
           <q-input
             v-model.trim="form.email"
             type="email"
             placeholder="Введите email"
             outlined
             :error="v$.email.$error"
-            @blur="v$.email.$touch">
-            <template v-slot:error>
+            @blur="v$.email.$touch"
+          >
+            <template #error>
               <div
-                class="text-left text-negative"
                 v-for="error in v$.email.$errors"
                 :key="error"
+                class="text-left text-negative"
               >
-                {{emailErrors[error.$message]}}
+                {{ emailErrors[error.$message] }}
               </div>
             </template>
           </q-input>
-          <p class="label">Пароль</p>
+          <p class="label">
+            Пароль
+          </p>
           <q-input
             v-model.trim="form.password"
             :type="isPasswordHidden ? 'password' : 'text'"
@@ -30,47 +40,56 @@
             outlined
             no-error-icon
             :error="v$.password.$error"
-            @blur="v$.password.$touch">
-            <template v-slot:append>
+            @blur="v$.password.$touch"
+          >
+            <template #append>
               <q-icon
                 :name="isPasswordHidden ? 'visibility_off' : 'visibility'"
                 class="cursor-pointer"
                 @click="isPasswordHidden = !isPasswordHidden"
               />
             </template>
-            <template v-slot:error>
+            <template #error>
               <div
-                class="text-left text-negative"
                 v-for="error in v$.password.$errors"
                 :key="error"
+                class="text-left text-negative"
               >
-                {{passwordErrors[error.$message]}}
+                {{ passwordErrors[error.$message] }}
               </div>
             </template>
           </q-input>
-          <p class="label">Имя</p>
+          <p class="label">
+            Имя
+          </p>
           <q-input
             v-model.trim="form.username"
             type="text"
             placeholder="Ваше имя"
             outlined
             :error="v$.username.$error"
-            @blur="v$.username.$touch">
-            <template v-slot:error>
-              <div class="text-left text-negative">Это поле обязательно.</div>
+            @blur="v$.username.$touch"
+          >
+            <template #error>
+              <div class="text-left text-negative">
+                Это поле обязательно.
+              </div>
             </template>
           </q-input>
         </div>
         <q-btn
           :loading="loading"
-          label="Войти"
+          label="Создать"
           class="full-width btn-auth"
           type="submit"
           loader
         />
       </div>
       <div class="auth-sub-title">
-        Уже есть аккаунт ? <router-link to="/auth/login">Войти</router-link>
+        Уже есть аккаунт ?
+        <router-link to="/auth/login">
+          Войти
+        </router-link>
       </div>
     </div>
   </q-form>
@@ -87,7 +106,7 @@ import { RegisterData } from 'components/constans'
 import { Notify } from 'quasar'
 
 export default {
-  name: 'register-form',
+  name: 'RegisterForm',
   setup () {
     const form = reactive<RegisterData>({
       username: '',

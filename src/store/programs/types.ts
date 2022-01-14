@@ -3,7 +3,10 @@ import { IExercise } from 'src/store/exercises/types'
 export interface IProgram {
   title: string;
   exercises: Array<IExercise>
-  color: string;
+  style: {
+    background: string;
+    color: string;
+  };
   user: string;
   _id: string;
 }

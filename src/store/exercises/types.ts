@@ -1,14 +1,21 @@
 import { IData } from 'src/api/constans'
 
+export interface IResults {
+  distance: number;
+  duration: number;
+  repetition: number;
+  weight: number;
+}
 export interface IResult {
-  date: string;
-  results: [];
+  date?: string;
+  results: IResults[];
   _id: string;
 }
 export interface IExercise extends IData {
   title: string;
   results: Array<IResult>;
   user: string;
+  isTimer: boolean;
   _id: string;
 }
 export interface StateInterface {
