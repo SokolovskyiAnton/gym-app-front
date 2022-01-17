@@ -4,7 +4,7 @@
     @hide="onDialogHide"
   >
     <q-card class="full-width full-height q-pa-sm flex column no-wrap dialog-bg ">
-      <h5 class="text-center">
+      <h5 class="text-center q-mt-sm">
         Результаты
       </h5>
       <result-markup

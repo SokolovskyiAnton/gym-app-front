@@ -4,7 +4,7 @@
       class="calendar-block"
       :class="{'full': fullSize}"
     >
-      <calendar-btn />
+      <calendar-button />
       <q-date
         v-model="date"
         class="full-width"
@@ -31,14 +31,14 @@ import { computed, ref } from 'vue'
 import { useStore } from 'src/store'
 import { locale } from 'pages/constans'
 import Board from 'components/Home/Board.vue'
-import CalendarBtn from 'components/Home/CalendarBtn.vue'
+import CalendarButton from 'components/Home/CalendarButton.vue'
 
 const store = useStore()
 const fullSize = ref<boolean>(false)
 const date = ref<string>('')
 const events = computed(() => store.getters.events)
 
-function changeHeight () {
+function changeHeight (): void {
   fullSize.value = !fullSize.value
 }
 </script>

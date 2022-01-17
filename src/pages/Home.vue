@@ -4,14 +4,7 @@
   </q-page>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 // <q-toggle @update:model-value="$q.dark.toggle()" :model-value="$q.dark.isActive"/>
 import Calendar from 'components/Home/Calendar.vue'
-
-export default {
-  name: 'Home',
-  components: {
-    Calendar
-  }
-}
 </script>

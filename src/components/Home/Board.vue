@@ -22,11 +22,12 @@ import { ICalendarProgram } from 'src/store/calendar/types'
 import BoardProgram from 'components/Home/BoardProgram/BoardProgram.vue'
 
 const props = defineProps<{
-  date: string
+  date: string | null
 }>()
 const store = useStore()
 const programs = computed(() => store.getters.calendarPrograms as ICalendarProgram[])
 const selectedProgram = computed(() => {
+  if (props.date === null) return undefined
   return programs.value.find(program => program.date === props.date)
 })
 

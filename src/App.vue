@@ -14,6 +14,8 @@ watch(auth, async () => {
     try {
       await store.dispatch('getProfile')
       await store.dispatch('getCategories')
+      await store.dispatch('getExercises')
+      await store.dispatch('getPrograms')
       await store.dispatch('getEvents')
     } catch (e) {
       console.error(e)
@@ -25,6 +27,8 @@ onMounted(async () => {
     try {
       await store.dispatch('getProfile')
       await store.dispatch('getCategories')
+      await store.dispatch('getExercises')
+      await store.dispatch('getPrograms')
       await store.dispatch('getEvents')
     } catch (e) {
       console.error(e)
@@ -32,7 +36,3 @@ onMounted(async () => {
   }
 })
 </script>
-
-<style lang="stylus">
-
-</style>

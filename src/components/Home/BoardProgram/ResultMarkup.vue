@@ -93,6 +93,7 @@
 </template>
 
 <script setup lang="ts">
+// TODO create sticky block
 import { reactive, ref, onMounted } from 'vue'
 import { useStore } from 'src/store'
 import { IResult } from 'src/store/exercises/types'
