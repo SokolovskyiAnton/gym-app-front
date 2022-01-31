@@ -1,4 +1,4 @@
-import { IExercise } from 'src/store/exercises/types'
+import { IExercise } from 'src/store/categories/types'
 
 export interface IProgram {
   title: string;

@@ -120,7 +120,7 @@ export default {
     const loading = ref<boolean>(false)
     const v$ = useVuelidate(rules, form)
 
-    const onSubmitPassword = async () => {
+    const onSubmitPassword = async (): Promise<void> => {
       const formData = {
         password: form.newPassword,
         token: props.token
@@ -136,7 +136,7 @@ export default {
         loading.value = false
       }
     }
-    const showSuccessNotify = () => {
+    const showSuccessNotify = (): void => {
       Notify.create({
         type: 'positive',
         message: 'Пароль успешно изменён.',

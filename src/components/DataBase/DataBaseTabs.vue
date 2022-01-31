@@ -19,7 +19,10 @@
       />
     </q-tabs>
 
-    <create-button :tab="tab" />
+    <create-button
+      :tab="tab"
+      @click="showModal"
+    />
 
     <q-tab-panels
       v-model="tab"
@@ -27,7 +30,7 @@
       animated
     >
       <q-tab-panel name="exercises">
-        <data-base-exercises />
+        <data-base-categories />
       </q-tab-panel>
       <q-tab-panel name="programs">
         <data-base-programs />
@@ -40,10 +43,21 @@
 // TODO create correct word endings
 import { ref } from 'vue'
 import CreateButton from 'components/CreateButton.vue'
-import DataBaseExercises from 'components/DataBase/DataBaseExercises.vue'
+import DataBaseCategories from 'components/DataBase/DataBaseCategories.vue'
 import DataBasePrograms from 'components/DataBase/DataBasePrograms.vue'
+import ExerciseCreateByCategory from 'components/DataBase/ExerciseCreateByCategory.vue'
+import { useQuasar } from 'quasar'
 
+const $q = useQuasar()
 const tab = ref<string>('exercises')
+
+function showModal (): void {
+  if (tab.value === 'exercises') {
+    $q.dialog({
+      component: ExerciseCreateByCategory
+    })
+  }
+}
 </script>
 
 <style lang="stylus" scoped>

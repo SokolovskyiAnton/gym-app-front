@@ -78,7 +78,8 @@ export default {
     const timer = ref<number>(60)
     const v$ = useVuelidate(rules, form)
     let timerId: any
-    const onSubmitEmail = async () => {
+
+    const onSubmitEmail = async (): Promise<void> => {
       if (v$.value.$invalid) {
         v$.value.$touch()
         return
@@ -99,7 +100,7 @@ export default {
         loading.value = false
       }
     }
-    const retrySendEmail = () => {
+    const retrySendEmail = (): void => {
       timerId = setInterval(() => {
         if (!timer.value) {
           clearInterval(timerId)
@@ -110,7 +111,7 @@ export default {
         timer.value--
       }, 1000)
     }
-    const showSuccessNotify = () => {
+    const showSuccessNotify = (): void => {
       Notify.create({
         type: 'positive',
         message: 'Запрос прошел успешно.',

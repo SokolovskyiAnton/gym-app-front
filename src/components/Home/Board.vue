@@ -6,7 +6,10 @@
     <h5 class="board-text text-center text-weight-bold">
       Добавь программу, чтобы записать тренировку.
     </h5>
-    <q-btn class="board-btn full-width">
+    <q-btn
+      class="board-btn full-width"
+      :disabled="!date"
+    >
       Добавить
     </q-btn>
   </div>

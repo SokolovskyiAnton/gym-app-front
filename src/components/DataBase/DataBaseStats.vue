@@ -7,7 +7,7 @@
     >
       <div class="stats-block__content">
         <div class="stats-block__length">
-          {{ item[0].value.length }}
+          {{ item[0].value.length || item[0].value }}
         </div>
         <div>
           <span>
@@ -25,9 +25,9 @@ import { computed } from 'vue'
 
 const store = useStore()
 const programs = computed(() => store.getters.programs)
-const exercises = computed(() => store.getters.exercises)
+const exercises = computed(() => store.getters.quantityOfExercises)
 
-const list = [[programs, 'программ'], [exercises, 'упражнений']]
+const list = [[exercises, 'упражнений'], [programs, 'программ']]
 </script>
 
 <style scoped lang="stylus">

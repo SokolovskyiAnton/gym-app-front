@@ -105,7 +105,8 @@ export default {
     const isPasswordHidden = ref<boolean>(true)
     const loading = ref<boolean>(false)
     const v$ = useVuelidate(rules, form)
-    const onSubmit = async () => {
+
+    const onSubmit = async (): Promise<void> => {
       if (v$.value.$invalid) {
         v$.value.$touch()
         return

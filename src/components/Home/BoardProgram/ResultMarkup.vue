@@ -96,7 +96,8 @@
 // TODO create sticky block
 import { reactive, ref, onMounted } from 'vue'
 import { useStore } from 'src/store'
-import { IResult } from 'src/store/exercises/types'
+import { useQuasar } from 'quasar'
+import { IResult } from 'src/store/categories/types'
 import { BoardProgramIds } from 'components/constans'
 
 const props = defineProps<{
@@ -105,10 +106,11 @@ const props = defineProps<{
 }>()
 
 const store = useStore()
+const $q = useQuasar()
 const form = reactive(props.exerciseResults)
 const isOldResult = ref<boolean>(true)
 
-function addResult () {
+function addResult (): void {
   form.results.push({
     weight: 0,
     duration: 0,
@@ -117,7 +119,7 @@ function addResult () {
   })
 }
 
-async function saveResult () {
+async function saveResult (): Promise<void> {
   if (!isOldResult.value) {
     await store.dispatch('createResult', {
       exerciseId: props.programIds?.exerciseId,
@@ -128,6 +130,10 @@ async function saveResult () {
         results: form.results
       }
     })
+    $q.notify({
+      type: 'positive',
+      message: 'Result is created'
+    })
   } else {
     await store.dispatch('updateResult', {
       exerciseId: props.programIds?.exerciseId,
@@ -136,6 +142,10 @@ async function saveResult () {
         _id: form._id,
         results: form.results
       }
+    })
+    $q.notify({
+      type: 'positive',
+      message: 'Result is updated'
     })
   }
 }

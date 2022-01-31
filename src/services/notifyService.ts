@@ -7,10 +7,6 @@ class NotificationService {
       message: message
     })
   }
-
-  static getCapitalizedText (text: string): string {
-    return text.charAt(0).toUpperCase()
-  }
 }
 
 export default NotificationService

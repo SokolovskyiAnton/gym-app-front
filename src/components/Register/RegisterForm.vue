@@ -123,7 +123,8 @@ export default {
     const loading = ref<boolean>(false)
     const isPasswordHidden = ref<boolean>(true)
     const v$ = useVuelidate(rules, form)
-    const onSubmit = async () => {
+
+    const onSubmit = async (): Promise<void> => {
       if (v$.value.$invalid) {
         v$.value.$touch()
         return
@@ -144,7 +145,7 @@ export default {
         loading.value = false
       }
     }
-    const showSuccessNotify = () => {
+    const showSuccessNotify = (): void => {
       Notify.create({
         type: 'positive',
         message: 'Аккаунт успешно создан.',

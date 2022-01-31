@@ -17,7 +17,7 @@
 
 <script setup lang="ts">
 import { useDialogPluginComponent } from 'quasar'
-import { IExercise, IResult } from 'src/store/exercises/types'
+import { IExercise, IResult } from 'src/store/categories/types'
 import ResultMarkup from 'components/Home/BoardProgram/ResultMarkup.vue'
 import { BoardProgramIds } from 'components/constans'
 

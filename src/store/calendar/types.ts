@@ -1,5 +1,5 @@
 import { IProgram } from 'src/store/programs/types'
-import { IResult } from 'src/store/exercises/types'
+import { IResult } from 'src/store/categories/types'
 
 export interface ICalendarProgram {
   date: string;

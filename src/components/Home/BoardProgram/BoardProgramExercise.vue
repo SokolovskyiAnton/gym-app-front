@@ -21,7 +21,7 @@
 <script setup lang="ts">
 import { useQuasar } from 'quasar'
 import { ICalendarProgram } from 'src/store/calendar/types'
-import { IExercise } from 'src/store/exercises/types'
+import { IExercise } from 'src/store/categories/types'
 import BoardProgramResults from 'components/Home/BoardProgram/BoardProgramResults.vue'
 
 const props = defineProps<{
@@ -29,7 +29,7 @@ const props = defineProps<{
 }>()
 const $q = useQuasar()
 
-function addResults (_id: string) {
+function addResults (_id: string): void {
   const exercise = props.selectedProgram?.program.exercises.find(exercise => exercise._id === _id) as IExercise
   const programIds = {
     exerciseId: exercise._id,

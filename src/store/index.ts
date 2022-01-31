@@ -1,6 +1,5 @@
 import { InjectionKey } from 'vue'
 import auth from './auth'
-import exercises from './exercises'
 import categories from './categories'
 import calendar from './calendar'
 import program from './programs'
@@ -29,7 +28,6 @@ export default function () {
   const Store = createStore({
     modules: {
       auth,
-      exercises,
       categories,
       calendar,
       program

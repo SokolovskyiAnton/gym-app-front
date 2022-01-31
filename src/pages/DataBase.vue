@@ -1,7 +1,9 @@
 <template>
-  <data-base-title />
-  <data-base-stats />
-  <data-base-tabs />
+  <q-page>
+    <data-base-title />
+    <data-base-stats />
+    <data-base-tabs />
+  </q-page>
 </template>
 
 <script setup lang="ts">

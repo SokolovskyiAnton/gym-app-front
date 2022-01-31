@@ -9,10 +9,6 @@
   </div>
 </template>
 
-<script setup lang="ts">
-
-</script>
-
 <style scoped lang="stylus">
 .data-base-title
   display flex
